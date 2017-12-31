@@ -1,27 +1,11 @@
-from os import listdir
-from os.path import isdir, join
-from flask_wtf import Form
-from wtforms import TextField, PasswordField, SelectField, TextAreaField, SubmitField, BooleanField, validators, ValidationError
-from wtforms.validators import Required
+from flask_wtf import FlaskForm
+from wtforms.fields import *
+from wtforms.fields.html5 import DecimalField, DateField
+from wtforms.validators import DataRequired
 
-#Identify network in inventory directory
-inv_dir =  "inventory/"
-net_inventory = [f for f in listdir(inv_dir) if isdir(join(inv_dir, f))]
-
-class NewDevice(Form):
-    device = TextField("Device Name", [validators.Required()])
-    mgmt_ip = TextField("Management IP", [validators.Required()])
-    role = TextField("Device Role", [validators.Required()])
-    network = SelectField(u'Network', choices=[(f, f) for f in net_inventory])
-    username = TextField("Login Username", [validators.Required()])
-    password = PasswordField("Login Password", [validators.Required()])
+class NewStock(FlaskForm):
+    symbol = SelectField("Stock Symbol", choices=[('btcusd', 'Bitcoin'), ('ltcusd', 'Litecoin'), ('ethusd', 'Ethereum'), ('bchusd', 'Bitcoin Cash')])
+    amount = FloatField("Amount Purchased", validators=[DataRequired()])
+    price = FloatField("Purchase Price", validators=[DataRequired()])
+    date = DateField("Data Purchased", format='%Y-%m-%d')
     submit = SubmitField("Submit")
-
-
-class NewNetwork(Form):
-    network = TextField("Network", [validators.Required()])
-    roles = TextField("Device Roles", [validators.Required()])
-    username = TextField("Login Username", [validators.Required()])
-    password = PasswordField("Login Password", [validators.Required()])
-    submit = SubmitField("Submit")
-

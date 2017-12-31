@@ -1,0 +1,26 @@
+[
+  {
+    "btcusd": {
+      "amount": 0.00614328,
+      "date": "12/21/17",
+      "price": 15652.88,
+      "symbol": "btcusd"
+    }
+  },
+  {
+    "bchusd": {
+      "amount": 0.04590909,
+      "date": "12/21/17",
+      "price": 3141.86,
+      "symbol": "bchusd"
+    }
+  }
+  {
+    "ethusd": {
+      "amount": 0.18135711,
+      "date": "12/21/17",
+      "price": 795.34,
+      "symbol": "ethusd"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+flask-bootstrap
+requests
+pandas
+flask_wtf
+flask-admin
+babel
+flask-babel
+Flask-Session
+

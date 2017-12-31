@@ -1,6 +1,39 @@
 {% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+
 {% block content %}
-  <div class="jumbo">
-       <img src="/static/img/grumpy_cat.jpg" alt="grump_cat.jpg">
-  </div>
+  <h2>Crypto-Currencies</h2>
+  <body>
+      <div class="container">
+          <img src="/static/img/bitcoin.png" alt="bitcoin">
+          <h3>Bitcoin</h3>
+          <p>Current: ${{ btc.last }}   <b>{{ btc_perf }}%</b></p>
+          <p>Days High: {{ btc.high }}<br>
+             Days Low: {{ btc.low }}<br>
+             Days Open: {{ btc.open }}<br>
+             Volume: {{ btc.volume|int }}</p><br>
+      </div>
+      <br>
+      <div class="container">
+          <img src="/static/img/bitcoin_cash.png" alt="bitcoin_cash">
+          <h3>Bitcoin Cash</h3>
+          <p>Current: ${{ bch.last }}   <b>{{ bch_perf }}%</b></p>
+          <p>Days High: {{ bch.high }}<br>
+             Days Low: {{ bch.low }}<br>
+             Days Open: {{ bch.open }}<br>
+             Volume: {{ bch.volume|int }}</p><br>
+      </div>
+      <br>
+      <div class="container">
+          <img src="/static/img/ethereum.png" alt="ethereum">
+          <h3>Ethereum</h3>
+          <p>Current: ${{ eth.last }}   <b>{{ eth_perf }}%</b></p>
+             Days High: {{ eth.high }}<br>
+             Days Low: {{ eth.low }}<br>
+             Days Open: {{ eth.open }}<br>
+             Volume: {{ eth.volume|int }}</p><br>
+      </div>
+  </body>
 {% endblock %}

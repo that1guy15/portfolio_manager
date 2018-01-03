@@ -196,3 +196,23 @@ form input#submit:hover{
   border: 1px solid #2d2d2d;
   border-radius: 10px;
 }
+
+/* Number colors */
+.negative-limit {
+  color: #b50311;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.positive-limit {
+  color: #068402;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.neutral-limit {
+  color: #848484;
+  font-size: 150%;
+  font-weight: bold;
+
+}

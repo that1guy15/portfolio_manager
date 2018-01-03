@@ -12,6 +12,7 @@ app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'password'
 portfolio = Path("portfolio.json")
+watching = ['btc', 'bch', 'eth']
 
 def api_get(query):
     """

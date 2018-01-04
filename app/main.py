@@ -88,10 +88,12 @@ def home():
     btc = api_get('https://www.bitstamp.net/api/v2/ticker/btcusd')
     bch = api_get('https://www.bitstamp.net/api/v2/ticker/bchusd')
     eth = api_get('https://www.bitstamp.net/api/v2/ticker/ethusd')
+    xrp = api_get('https://www.bitstamp.net/api/v2/ticker/xrpusd')
     btc_perf = stock_perf(btc['open'], btc['last'])
     bch_perf = stock_perf(bch['open'], bch['last'])
     eth_perf = stock_perf(eth['open'], eth['last'])
-    return render_template('home.html', btc=btc, bch=bch, eth=eth, btc_perf=btc_perf, bch_perf=bch_perf,
+    xrp_perf = stock_perf(xrp['open'], xrp['last'])
+    return render_template('home.html', btc=btc, bch=bch, eth=eth, xrp=xrp, btc_perf=btc_perf, bch_perf=bch_perf, xrp_perf=xrp_perf,
                            eth_perf=eth_perf)
 
 @app.route('/crypto', methods=['GET', 'POST'])

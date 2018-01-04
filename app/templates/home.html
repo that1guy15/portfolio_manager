@@ -42,18 +42,35 @@
       <br>
       <div class="container">
           <img src="/static/img/ethereum.png" alt="ethereum">
-          <h3>Ethereum  </h3>
-              {% if btc_perf > 0 %}
-                <span class=positive-limit><b>{{ eth_perf }}%</b></span>
-              {% elif btc_perf == 0 %}
-                <span class=neutral-limit><b>{{ eth_perf }}%</b></span>
-              {% else %}
-                <span class=negative-limit><b>{{ eth_perf }}%</b></span>
-              {% endif %}
+          <h3>Ethereum</h3>
+            {% if eth_perf > 0.0 %}
+               <span class=positive-limit><b>{{ eth_perf }}%</b></span>
+            {% elif eth_perf == 0.0 %}
+               <span class=neurtral-limit><b>{{ eth_perf }}%</b></span>
+            {% else %}
+               <span class=negative-limit><b>{{ eth_perf }}%</b></span>
+            {% endif %}
           <p>Current: <b>{{ "${:,.2f}".format(eth.last|float) }}</b><br>
              Days High: {{ "${:,.2f}".format(eth.high|float) }}<br>
              Days Low: {{ "${:,.2f}".format(eth.low|float) }}<br>
              Days Open: {{ "${:,.2f}".format(eth.open|float) }}<br>
+             Volume: {{ btc.volume|int }}</p><br>
+      </div>
+      <br>
+      <div class="container">
+          <img src="/static/img/ripple.png" alt="ripple">
+          <h3>Ripple (XRP)  </h3>
+              {% if xrp_perf > 0 %}
+                <span class=positive-limit><b>{{ xrp_perf }}%</b></span>
+              {% elif xrp_perf == 0 %}
+                <span class=neutral-limit><b>{{ xrp_perf }}%</b></span>
+              {% else %}
+                <span class=negative-limit><b>{{ xrp_perf }}%</b></span>
+              {% endif %}
+          <p>Current: <b>{{ "${:,.2f}".format(xrp.last|float) }}</b><br>
+             Days High: {{ "${:,.2f}".format(xrp.high|float) }}<br>
+             Days Low: {{ "${:,.2f}".format(xrp.low|float) }}<br>
+             Days Open: {{ "${:,.2f}".format(xrp.open|float) }}<br>
              Volume: {{ eth.volume|int }}</p><br>
       </div>
   </body>

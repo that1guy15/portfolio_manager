@@ -9,51 +9,51 @@
       <div class="container">
           <img src="/static/img/bitcoin.png" alt="bitcoin">
           <h3>Bitcoin</h3>
-            {% if btc_perf < 0 %}
-               <span class=negative-limit><b>{{ btc_perf }}%</b></span>
-            {% elif btc_perf > 0 %}
+            {% if btc_perf > 0.0 %}
                <span class=positive-limit><b>{{ btc_perf }}%</b></span>
+            {% elif btc_perf == 0.0 %}
+               <span class=neurtral-limit><b>{{ btc_perf }}%</b></span>
             {% else %}
-               <span class=neutral-limit><b>{{ btc_perf }}%</b></span>
+               <span class=negative-limit><b>{{ btc_perf }}%</b></span>
             {% endif %}
-          <p>Current: <b>${{ btc.last }}</b><br>
-             Days High: {{ btc.high }}<br>
-             Days Low: {{ btc.low }}<br>
-             Days Open: {{ btc.open }}<br>
+          <p>Current: <b>{{ "${:,.2f}".format(btc.last|float) }}</b><br>
+             Days High: {{ "${:,.2f}".format(btc.high|float) }}<br>
+             Days Low: {{ "${:,.2f}".format(btc.low|float) }}<br>
+             Days Open: {{ "${:,.2f}".format(btc.open|float) }}<br>
              Volume: {{ btc.volume|int }}</p><br>
       </div>
       <br>
       <div class="container">
           <img src="/static/img/bitcoin_cash.png" alt="bitcoin_cash">
           <h3>Bitcoin Cash</h3>
-            {% if btc_perf < 0 %}
-              <span class=negative-limit><b>{{ bch_perf }}%</b></span>
-            {% elif btc_perf > 0 %}
+            {% if btc_perf > 0 %}
               <span class=positive-limit><b>{{ bch_perf }}%</b></span>
-            {% else %}
+            {% elif btc_perf == 0 %}
               <span class=neutral-limit><b>{{ bch_perf }}%</b></span>
+            {% else %}
+              <span class=negative-limit><b>{{ bch_perf }}%</b></span>
             {% endif %}
-          <p>Current: <b>${{ bch.last }}</b><br>
-             Days High: {{ bch.high }}<br>
-             Days Low: {{ bch.low }}<br>
-             Days Open: {{ bch.open }}<br>
+          <p>Current: <b>{{ "${:,.2f}".format(bch.last|float) }}</b><br>
+             Days High: {{ "${:,.2f}".format(bch.high|float) }}<br>
+             Days Low: {{ "${:,.2f}".format(bch.low|float) }}<br>
+             Days Open: {{ "${:,.2f}".format(bch.open|float) }}<br>
              Volume: {{ bch.volume|int }}</p><br>
       </div>
       <br>
       <div class="container">
           <img src="/static/img/ethereum.png" alt="ethereum">
           <h3>Ethereum  </h3>
-              {% if btc_perf < 0 %}
-                <span class=negative-limit><b>{{ eth_perf }}%</b></span>
-              {% elif btc_perf > 0 %}
+              {% if btc_perf > 0 %}
                 <span class=positive-limit><b>{{ eth_perf }}%</b></span>
-              {% else %}
+              {% elif btc_perf == 0 %}
                 <span class=neutral-limit><b>{{ eth_perf }}%</b></span>
+              {% else %}
+                <span class=negative-limit><b>{{ eth_perf }}%</b></span>
               {% endif %}
-          <p>Current: <b>${{ eth.last }}</b><br>
-             Days High: {{ eth.high }}<br>
-             Days Low: {{ eth.low }}<br>
-             Days Open: {{ eth.open }}<br>
+          <p>Current: <b>{{ "${:,.2f}".format(eth.last|float) }}</b><br>
+             Days High: {{ "${:,.2f}".format(eth.high|float) }}<br>
+             Days Low: {{ "${:,.2f}".format(eth.low|float) }}<br>
+             Days Open: {{ "${:,.2f}".format(eth.open|float) }}<br>
              Volume: {{ eth.volume|int }}</p><br>
       </div>
   </body>

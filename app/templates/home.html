@@ -7,7 +7,7 @@
   <h2>Crypto Currencies</h2>
   <body>
       {% for k, v in crypto_data['DISPLAY'].items() %}
-      <div class="card">
+      <div class="container">
           <img src={{"/static/img/" + k + ".png"}} alt={{ k }}>
           <h3><a href={{ "https://coinranking.com/coin/" + k }} target="_blank">{{ k }}</a></h3>
             {% if v['USD']['CHANGEPCT24HOUR']|float > 0.00 %}

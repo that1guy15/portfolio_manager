@@ -1,18 +1,19 @@
 import sys
-import json
-import app
-import pandas as pd
 import requests
 from flask import Flask, render_template, request, flash
 from flask_bootstrap import Bootstrap
-from app.forms import NewStock
+from urllib.parse import urlencode, quote_plus
 from pathlib import Path
+from app.forms import NewStock
+from app.PortfolioPerf import PortfolioPerf
 
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'password'
 portfolio = Path("portfolio.json")
-watching = ['btc', 'bch', 'eth']
+crypto = 'ETH,XRP,BTC,BCH'
+currentcy = ['USD']
+
 
 def api_get(query):
     """
@@ -27,20 +28,6 @@ def api_get(query):
 
     return data
 
-def stock_perf(open, last):
-    """
-    Calculate the performance of the given stock
-    :param open:
-    :param last:
-    :return:
-    """
-
-    data = [float(open), float(last)]
-    price_df = pd.Series(data).pct_change()
-    perf = price_df.round(decimals=4)
-
-    return perf[1] * 100
-
 def portfolio_add(symbol, amount, price, date):
     """
     Add the given stock purchase to the portfolio
@@ -52,13 +39,11 @@ def portfolio_add(symbol, amount, price, date):
     """
 
     data = {
-        symbol: {
             "symbol": symbol,
             "amount": amount,
             "price": price,
             "date": date
             }
-        }
 
     #Create portfolio file if not exist and add entry
     if portfolio.is_file() == False:
@@ -85,16 +70,11 @@ def portfolio_add(symbol, amount, price, date):
 @app.route('/')
 def home():
 
-    btc = api_get('https://www.bitstamp.net/api/v2/ticker/btcusd')
-    bch = api_get('https://www.bitstamp.net/api/v2/ticker/bchusd')
-    eth = api_get('https://www.bitstamp.net/api/v2/ticker/ethusd')
-    xrp = api_get('https://www.bitstamp.net/api/v2/ticker/xrpusd')
-    btc_perf = stock_perf(btc['open'], btc['last'])
-    bch_perf = stock_perf(bch['open'], bch['last'])
-    eth_perf = stock_perf(eth['open'], eth['last'])
-    xrp_perf = stock_perf(xrp['open'], xrp['last'])
-    return render_template('home.html', btc=btc, bch=bch, eth=eth, xrp=xrp, btc_perf=btc_perf, bch_perf=bch_perf, xrp_perf=xrp_perf,
-                           eth_perf=eth_perf)
+    # URL and encode payload request by cryptocompare.com api
+    crypto_url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH,XRP,BTC,BCH&tsyms=USD"
+    crypto_data = api_get(crypto_url)
+
+    return render_template('home.html', crypto_data=crypto_data)
 
 @app.route('/crypto', methods=['GET', 'POST'])
 def crypto():

@@ -4,74 +4,26 @@
 {% import "bootstrap/utils.html" as util %}
 
 {% block content %}
-  <h2>Crypto-Currencies</h2>
+  <h2>Crypto Currencies</h2>
   <body>
-      <div class="container">
-          <img src="/static/img/bitcoin.png" alt="bitcoin">
-          <h3>Bitcoin</h3>
-            {% if btc_perf > 0.0 %}
-               <span class=positive-limit><b>{{ btc_perf }}%</b></span>
-            {% elif btc_perf == 0.0 %}
-               <span class=neurtral-limit><b>{{ btc_perf }}%</b></span>
+      {% for k, v in crypto_data['DISPLAY'].items() %}
+      <div class="card">
+          <img src={{"/static/img/" + k + ".png"}} alt={{ k }}>
+          <h3><a href={{ "https://coinranking.com/coin/" + k }} target="_blank">{{ k }}</a></h3>
+            {% if v['USD']['CHANGEPCT24HOUR']|float > 0.00 %}
+               <span class=positive-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
+            {% elif v['USD']['CHANGEPCT24HOUR']|float == 0.00 %}
+               <span class=neurtral-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
             {% else %}
-               <span class=negative-limit><b>{{ btc_perf }}%</b></span>
+               <span class=negative-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
             {% endif %}
-          <p>Current: <b>{{ "${:,.2f}".format(btc.last|float) }}</b><br>
-             Days High: {{ "${:,.2f}".format(btc.high|float) }}<br>
-             Days Low: {{ "${:,.2f}".format(btc.low|float) }}<br>
-             Days Open: {{ "${:,.2f}".format(btc.open|float) }}<br>
-             Volume: {{ btc.volume|int }}</p><br>
+          <p>Current: <b>{{ v['USD']['PRICE'] }}</b><br>
+              Market Cap: {{ v['USD']['CHANGEPCT24HOUR'] }}<br>
+              Days High: {{ v['USD']['HIGH24HOUR'] }}<br>
+              Days Low: {{ v['USD']['LOW24HOUR'] }}<br>
+              Days Open: {{ v['USD']['OPEN24HOUR'] }}<br>
+              Volume: {{ v['USD']['LASTVOLUMETO'] }}</p><br>
       </div>
-      <br>
-      <div class="container">
-          <img src="/static/img/bitcoin_cash.png" alt="bitcoin_cash">
-          <h3>Bitcoin Cash</h3>
-            {% if btc_perf > 0 %}
-              <span class=positive-limit><b>{{ bch_perf }}%</b></span>
-            {% elif btc_perf == 0 %}
-              <span class=neutral-limit><b>{{ bch_perf }}%</b></span>
-            {% else %}
-              <span class=negative-limit><b>{{ bch_perf }}%</b></span>
-            {% endif %}
-          <p>Current: <b>{{ "${:,.2f}".format(bch.last|float) }}</b><br>
-             Days High: {{ "${:,.2f}".format(bch.high|float) }}<br>
-             Days Low: {{ "${:,.2f}".format(bch.low|float) }}<br>
-             Days Open: {{ "${:,.2f}".format(bch.open|float) }}<br>
-             Volume: {{ bch.volume|int }}</p><br>
-      </div>
-      <br>
-      <div class="container">
-          <img src="/static/img/ethereum.png" alt="ethereum">
-          <h3>Ethereum</h3>
-            {% if eth_perf > 0.0 %}
-               <span class=positive-limit><b>{{ eth_perf }}%</b></span>
-            {% elif eth_perf == 0.0 %}
-               <span class=neurtral-limit><b>{{ eth_perf }}%</b></span>
-            {% else %}
-               <span class=negative-limit><b>{{ eth_perf }}%</b></span>
-            {% endif %}
-          <p>Current: <b>{{ "${:,.2f}".format(eth.last|float) }}</b><br>
-             Days High: {{ "${:,.2f}".format(eth.high|float) }}<br>
-             Days Low: {{ "${:,.2f}".format(eth.low|float) }}<br>
-             Days Open: {{ "${:,.2f}".format(eth.open|float) }}<br>
-             Volume: {{ btc.volume|int }}</p><br>
-      </div>
-      <br>
-      <div class="container">
-          <img src="/static/img/ripple.png" alt="ripple">
-          <h3>Ripple (XRP)  </h3>
-              {% if xrp_perf > 0 %}
-                <span class=positive-limit><b>{{ xrp_perf }}%</b></span>
-              {% elif xrp_perf == 0 %}
-                <span class=neutral-limit><b>{{ xrp_perf }}%</b></span>
-              {% else %}
-                <span class=negative-limit><b>{{ xrp_perf }}%</b></span>
-              {% endif %}
-          <p>Current: <b>{{ "${:,.2f}".format(xrp.last|float) }}</b><br>
-             Days High: {{ "${:,.2f}".format(xrp.high|float) }}<br>
-             Days Low: {{ "${:,.2f}".format(xrp.low|float) }}<br>
-             Days Open: {{ "${:,.2f}".format(xrp.open|float) }}<br>
-             Volume: {{ eth.volume|int }}</p><br>
-      </div>
+      {% endfor %}
   </body>
 {% endblock %}

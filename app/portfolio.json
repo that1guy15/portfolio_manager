@@ -1,26 +1,26 @@
 [
   {
-    "btcusd": {
-      "amount": 0.00614328,
-      "date": "12/21/17",
-      "price": 15652.88,
-      "symbol": "btcusd"
-    }
+    "symbol": "ethusd",
+    "amount": 0.09828680,
+    "date": "01/04/17",
+    "price": 978.87
   },
   {
-    "bchusd": {
-      "amount": 0.04590909,
-      "date": "12/21/17",
-      "price": 3141.86,
-      "symbol": "bchusd"
-    }
-  }
+    "symbol": "xrpusb",
+    "amount": 37.08689200,
+    "date": "01/05/17",
+    "price": 2.90997
+  },
   {
-    "ethusd": {
-      "amount": 0.18135711,
-      "date": "12/21/17",
-      "price": 795.34,
-      "symbol": "ethusd"
-    }
+    "symbol": "xrpusb",
+    "amount": 52.800982,
+    "date": "01/07/17",
+    "price": 2.64
+  },
+  {
+    "symbol": "ethusd",
+    "amount": 0.18135711,
+    "date": "12/21/17",
+    "price": 795.34
   }
 ]

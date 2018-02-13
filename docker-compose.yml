@@ -3,8 +3,6 @@ services:
   web:
     build: .
     container_name: flask-web
-    links:
-      - "influxdb:influx"
     command: pip install -r requirments.txt
     volumes:
       - ./app:/app

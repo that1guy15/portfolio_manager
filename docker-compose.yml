@@ -17,17 +17,3 @@ services:
     command: flask run --host=0.0.0.0 --port=80
     # Infinite loop, to keep it alive, for debugging
     # command: bash -c "while true; do echo 'sleeping...' && sleep 10; done"
-  influxdb:
-     image: influxdb:latest
-     container_name: influxdb
-     environment:
-       - INFLUXDB_ADMIN_ENABLE=true
-       - INFLUXDB_DB=portfolio-manager
-       - INFLUXDB_HTTP_AUTH_ENABLED=True
-       - INFLUXDB_ADMIN_USER=admin
-       - INFLUXDB_ADMIN_PASSWORD=admin
-     volumes:
-       - ./data:/var/lib/influxdb
-     ports:
-       - "8083:8083"
-       - "8086:8086"

@@ -1,26 +1,30 @@
 [
   {
-    "symbol": "ethusd",
+    "symbol": "ETH",
     "amount": 0.09828680,
     "date": "01/04/17",
-    "price": 978.87
+    "price": 978.87,
+    "value": 96.21
   },
   {
-    "symbol": "xrpusb",
+    "symbol": "XRP",
     "amount": 37.08689200,
     "date": "01/05/17",
-    "price": 2.90997
+    "price": 2.90997,
+    "value": 107.92
   },
   {
-    "symbol": "xrpusb",
+    "symbol": "XRP",
     "amount": 52.800982,
     "date": "01/07/17",
-    "price": 2.64
+    "price": 2.64,
+    "value": 139.40
   },
   {
-    "symbol": "ethusd",
+    "symbol": "ETH",
     "amount": 0.18135711,
     "date": "12/21/17",
-    "price": 795.34
+    "price": 795.34,
+    "value": 144.24
   }
 ]

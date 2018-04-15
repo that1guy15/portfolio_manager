@@ -2,17 +2,17 @@ import sys
 import requests
 from flask import Flask, render_template, request, flash
 from flask_bootstrap import Bootstrap
-from urllib.parse import urlencode, quote_plus
-from pathlib import Path
+import json
 from app.forms import NewStock
-from app.PortfolioPerf import PortfolioPerf
+from app.PortfolioPerf import PortfolioAddPerf
 
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'password'
-portfolio = Path("portfolio.json")
-crypto = 'ETH,XRP,BTC,BCH'
+portfolio = './portfolio.json'
+crypto_watch = ['ETH', 'XRP', 'BTC', 'BCH']
 currentcy = ['USD']
+
 
 
 def api_get(query):
@@ -42,7 +42,8 @@ def portfolio_add(symbol, amount, price, date):
             "symbol": symbol,
             "amount": amount,
             "price": price,
-            "date": date
+            "date": date,
+            "value": amount * price
             }
 
     #Create portfolio file if not exist and add entry
@@ -72,7 +73,11 @@ def home():
 
     # URL and encode payload request by cryptocompare.com api
     crypto_url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH,XRP,BTC,BCH&tsyms=USD"
-    crypto_data = api_get(crypto_url)
+
+    padd = PortfolioAddPerf(portfolio, crypto_watch, crypto_url)
+
+    crypto_data = padd.portfolio_add_perf()
+    #crypto_data = api_get(crypto_url)
 
     return render_template('home.html', crypto_data=crypto_data)
 

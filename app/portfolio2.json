@@ -1,0 +1,65 @@
+[
+  {
+    "symbol": "AMZN",
+    "amount": 6.00,
+    "date": "04/18/18",
+    "price": 1508.76,
+    "value": 9052.54
+  },
+  {
+    "symbol": "GOOGL",
+    "amount": 4.00,
+    "date": "04/18/18",
+    "price": 1072.75,
+    "value": 4291.00
+  },
+  {
+    "symbol": "NVDA",
+    "amount": 13.00,
+    "date": "04/18/18",
+    "price": 235.57,
+    "value": 3062.42
+  },
+  {
+    "symbol": "STM",
+    "amount": 11.00,
+    "date": "04/18/18",
+    "price": 23.17,
+    "value": 254.82
+  },
+  {
+    "symbol": "MSFT",
+    "amount": 1.00,
+    "date": "10/31/17",
+    "price": 86.25,
+    "value": 86.25
+  },
+  {
+    "symbol": "MSFT",
+    "amount": 3.00,
+    "date": "11/30/17",
+    "price": 85.27,
+    "value": 255.81
+  },
+  {
+    "symbol": "MSFT",
+    "amount": 5.00,
+    "date": "12/29/17",
+    "price": 86.78,
+    "value": 433.88
+  },
+  {
+    "symbol": "MSFT",
+    "amount": 2.00,
+    "date": "01/31/18",
+    "price": 96.49,
+    "value": 192.98
+  },
+  {
+    "symbol": "MSFT",
+    "amount": 2.00,
+    "date": "03/01/18",
+    "price": 94.92,
+    "value": 189.83
+  }
+]

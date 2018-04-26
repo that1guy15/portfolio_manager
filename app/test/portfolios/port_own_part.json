@@ -1,0 +1,16 @@
+[
+  {
+    "symbol": "ETH",
+    "amount": 1.01,
+    "date": "01/04/17",
+    "price": 978.87,
+    "value": 988.66
+  },
+  {
+    "symbol": "ETH",
+    "amount": 0.098,
+    "date": "01/04/17",
+    "price": 100.00,
+    "value": 9.80
+  }
+]

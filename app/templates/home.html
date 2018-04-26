@@ -10,31 +10,33 @@
       {% for k, v in crypto_data['DISPLAY'].items() %}
       <div class="row">
           <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src={{"/static/img/" + k + ".png"}} alt={{ k }} >
               <div class="card-body">
-                <h4 class="card-title"><a href={{ "https://coinranking.com/coin/" + k }} target="_blank">{{ k }}</a></h4>
+                <div class="card-title">
+                    <img class=" stock-icon" src={{"/static/img/" + k + ".png"}} alt={{ k }} >
+                    <h4><a href={{ "https://coinranking.com/coin/" + k }} target="_blank">{{ k }}</a></h4>
+                </div>
                 <p class="card-text">
-                {% if v['USD']['CHANGEPCT24HOUR']|float > 0.00 %}
-                <span class=positive-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
-                {% elif v['USD']['CHANGEPCT24HOUR']|float == 0.00 %}
-                <span class=neurtral-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
-                {% else %}
-                <span class=negative-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
-                {% endif %}
-                <br>
-                Current: <b>{{ v['USD']['PRICE'] }}</b><br>
-                Market Cap: {{ v['USD']['MKTCAP'] }}<br>
-                Days High: {{ v['USD']['HIGH24HOUR'] }}<br>
-                Days Low: {{ v['USD']['LOW24HOUR'] }}<br>
-                Days Open: {{ v['USD']['OPEN24HOUR'] }}<br>
-                Volume: {{ v['USD']['LASTVOLUMETO'] }}</p>
-                {% if v['USD']['AmountOwned'] != 0 %}
-                <h6 class="card-footer text-muted">
+                  {% if v['USD']['CHANGEPCT24HOUR']|float > 0.00 %}
+                  <span class=positive-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
+                  {% elif v['USD']['CHANGEPCT24HOUR']|float == 0.00 %}
+                  <span class=neurtral-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
+                  {% else %}
+                  <span class=negative-limit><b>{{ v['USD']['CHANGEPCT24HOUR'] }}%</b></span>
+                  {% endif %}
+                  <br>
+                  Current: <b>{{ v['USD']['PRICE'] }}</b><br>
+                  Market Cap: {{ v['USD']['MKTCAP'] }}<br>
+                  Days High: {{ v['USD']['HIGH24HOUR'] }}<br>
+                  Days Low: {{ v['USD']['LOW24HOUR'] }}<br>
+                  Days Open: {{ v['USD']['OPEN24HOUR'] }}<br>
+                  Volume: {{ v['USD']['LASTVOLUMETO'] }}</p>
+                  {% if v['USD']['AmountOwned'] != 0 %}
+                  <h6 class="card-footer text-muted">
                       Total Return: <b>{{ v['USD']['TotalReturnPCT'] }}</b> {{ v['USD']['TotalReturn'] }}<br>
                       Current Value: {{ v['USD']['CurrentValue'] }}<br>
                       Positions Held: {{ v['USD']['AmountOwned'] }}</h6>
-                {% endif %}
-              </div>
+                  {% endif %}
+                </div>
           </div>
       </div>
       {% endfor %}

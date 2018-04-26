@@ -1,30 +1,9 @@
 [
   {
-    "symbol": "ETH",
-    "amount": 0.09828680,
-    "date": "01/04/17",
-    "price": 978.87,
-    "value": 96.21
-  },
-  {
-    "symbol": "XRP",
-    "amount": 37.08689200,
-    "date": "01/05/17",
-    "price": 2.90997,
-    "value": 107.92
-  },
-  {
-    "symbol": "XRP",
-    "amount": 52.800982,
-    "date": "01/07/17",
-    "price": 2.64,
-    "value": 139.40
-  },
-  {
-    "symbol": "ETH",
-    "amount": 0.18135711,
-    "date": "12/21/17",
-    "price": 795.34,
-    "value": 144.24
+    "symbol": "EOS",
+    "amount": 17.62135848,
+    "date": "04/4/18",
+    "price": 14.55,
+    "value": 256.35
   }
 ]

@@ -64,7 +64,7 @@ class PortfolioAddPerf():
 
         Returns
         -------
-        Returns the purchase value of each stock owened from portfolio
+        Returns the purchase value of each stock owned from portfolio
         """
 
         # Total value of each crypto owned

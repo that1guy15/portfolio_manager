@@ -42,6 +42,18 @@
           </div>
           {% endfor %}
       </div>
+      <div class="card-deck">
+          <div class="col-lg-4 col-md-4 col-xs-4">
+              <div class="card bg-light mb-3" style="width: 18rem;">
+                <div class="card-body">
+                {{util.flashed_messages(dismissible=True)}}
+                    <h6 class="card-title">Add Crypto</h6>
+                    <div class="card-text">
+                        {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+                    </div>
+                </div>
+              </div>
+          </div>
+       </div>
     </div>
-  </body>
 {% endblock %}

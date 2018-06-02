@@ -1,6 +1,7 @@
 import sys
 import json
 import requests
+from app.PortfolioMgmt import *
 
 def api_get(query):
     """
@@ -33,15 +34,9 @@ class PortfolioAddPerf():
         self.stock_url = stock_url
         self.my_data = api_get(stock_url)
 
-        # Read in portfolio data into json payload load_data
-        try:
-            f = open(self.portfolio, 'rb')
-        except IOError:
-            print("Could not read file:", self.portfolio)
-            sys.exit()
-
-        with f:
-            self.portfolio_data = json.load(f)
+        # Read in portfolio data
+        pfadd = PortfolioMgmt(self.portfolio)
+        self.portfolio_data = pfadd.portfolio_read()
 
 
     def stock_quantity(self):

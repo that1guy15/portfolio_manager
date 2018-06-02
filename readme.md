@@ -24,3 +24,6 @@ Within the container you now need to start flask
 `flask run --host=0.0.0.0 --port=80`
 
 You will then be able to use a web browser and go to http://localhost
+
+Alternativley you can use `docker-compose up` from the project directory. 
+

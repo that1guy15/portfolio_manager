@@ -7,52 +7,14 @@ import json
 from app.forms import NewStock, AddSymbol
 from app.PortfolioPerf import PortfolioAddPerf
 from app.WatchlistMgmt import *
+from app.PortfolioMgmt import *
 
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'password'
 portfolio = './portfolio.json'
 watchlist = './watchlist.json'
-
 currentcy = ['USD']
-
-def portfolio_add(symbol, amount, price, date):
-    """
-    Add the given stock purchase to the portfolio
-    :param symbol:
-    :param amount:
-    :param price:
-    :param date:
-    :return:
-    """
-
-    data = {
-            "symbol": symbol,
-            "amount": amount,
-            "price": price,
-            "date": date,
-            "value": amount * price
-            }
-
-    #Create portfolio file if not exist and add entry
-    if Path(portfolio).is_file() == False:
-        with open(portfolio, mode='w', encoding='utf-8') as f:
-            json.dump([], f)
-
-    #Add entry to existing portfolio file
-    try:
-        with open(portfolio) as f:
-            load_data = json.load(f)
-
-            load_data.append(data)
-            json.dump(load_data, sys.stdout, indent=2)
-
-            with open(portfolio, mode='w', encoding='utf-8') as f:
-                json.dump(load_data, f, sort_keys=True, indent= 2, ensure_ascii= False)
-
-            return symbol + ' added to your portfolio'
-    except Exception as e:
-        return str(e)
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
@@ -84,7 +46,7 @@ def home():
             if add_transaction is True:
                 return redirect(url_for('crypto'))
             else:
-                return redirect(url_for('home'), form=form, error=message, crypto_data=crypto_data)
+                return render_template('home.html', form=form, error=message, crypto_data=crypto_data)
 
     elif request.method == 'GET':
         return render_template('home.html', form=form, crypto_data=crypto_data)
@@ -100,14 +62,16 @@ def crypto():
     date = form.date.data
     message = None
 
+    pfadd = PortfolioMgmt(portfolio)
+
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.', 'error')
             return render_template('crypto.html', form=form)
         else:
             try:
-                portfolio_add(symbol, amount, price, date)
-                flash('Successfully added ' + symbol)
+                message = pfadd.portfolio_add(symbol, amount, price, date)
+                flash(message)
             except Exception as e:
                 flash("Unexpected error:" + str(e), 'error')
         return render_template('crypto.html', form=form, error=message)

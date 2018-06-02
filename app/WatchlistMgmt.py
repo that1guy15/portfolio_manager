@@ -18,7 +18,7 @@ class WatchlistMgmt():
         Returns - list
         """
         try:
-            f = open(self.watchlist, 'rb')
+            f = open(Path(self.watchlist), 'rb')
         except IOError:
             print("Could not read file:", self.watchlist)
             sys.exit()
@@ -43,18 +43,18 @@ class WatchlistMgmt():
 
         # Create watchlist file if not exist
         if Path(self.watchlist).is_file() == False:
-            with open(self.watchlist, mode='w', encoding='utf-8') as f:
+            with open(Path(self.watchlist), mode='w', encoding='utf-8') as f:
                 json.dump([], f)
 
         # Add symbol to portfolio file
         try:
-            with open(self.watchlist) as f:
+            with open(Path(self.watchlist)) as f:
                 load_data = json.load(f)
 
                 load_data['watchlist'].append(data)
                 json.dump(load_data, sys.stdout, indent=2)
 
-                with open(self.watchlist, mode='w', encoding='utf-8') as f:
+                with open(Path(self.watchlist), mode='w', encoding='utf-8') as f:
                     json.dump(load_data, f, sort_keys=True, indent=2, ensure_ascii=False)
 
                 return symbol + ' added to your watchlist'
@@ -63,7 +63,7 @@ class WatchlistMgmt():
 
     def watchlist_remove(self, symbol):
         """
-        Creates watchlist if dosent exist, Adds symbol to watchlist.
+        Removes symbol and transaction to watchlist.
         Parameters
         ----------
         symbol - str
@@ -76,13 +76,13 @@ class WatchlistMgmt():
 
         # remove symbol from portfolio file
         try:
-            with open(self.watchlist) as f:
+            with open(Path(self.watchlist)) as f:
                 load_data = json.load(f)
 
                 load_data['watchlist'].remove(data)
                 json.dump(load_data, sys.stdout, indent=2)
 
-                with open(self.watchlist, mode='w', encoding='utf-8') as f:
+                with open(Path(self.watchlist), mode='w', encoding='utf-8') as f:
                     json.dump(load_data, f, sort_keys=True, indent=2, ensure_ascii=False)
 
                 return symbol + ' added to your watchlist'

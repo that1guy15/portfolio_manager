@@ -1,17 +1,24 @@
 import sys
 import json
+import requests
 from unittest import TestCase
+from nose.tools import *
 from ..PortfolioPerf import api_get, PortfolioAddPerf
 
 class test_portfolio_perf(TestCase):
 
     # Tests for PortfolioPerf.py
 
+    def test_api_get(self):
+        response = api_get('http://jsonplaceholder.typicode.com/users')
+
+        self.assertIsNotNone(response, msg=None)
+
     def test_stock_quantity_own_all(self):
         """
         All stocks listed in stock are listed in portfolio
         """
-        self.portfolio = './app/test/portfolios/port_own_all.json'
+        self.portfolio = './app/test/payloads/port_own_all.json'
         self.stock = ['ETH', 'BTC']
         self.stock_url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD'
 
@@ -28,7 +35,7 @@ class test_portfolio_perf(TestCase):
         Some stocks listed in stock are listed in portfolio. Others are missing.
         Multiple transactions per single stock
         """
-        self.portfolio = './app/test/portfolios/port_own_part.json'
+        self.portfolio = './app/test/payloads/port_own_part.json'
         self.stock = ['ETH', 'BTC']
         self.stock_url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD'
 
@@ -44,7 +51,7 @@ class test_portfolio_perf(TestCase):
         """
         All stocks listed in stock are listed in portfolio
         """
-        self.portfolio = './app/test/portfolios/port_own_all.json'
+        self.portfolio = './app/test/payloads/port_own_all.json'
         self.stock = ['ETH', 'BTC']
         self.stock_url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD'
 
@@ -61,7 +68,7 @@ class test_portfolio_perf(TestCase):
         Some stocks listed in stock are listed in portfolio. Others are missing.
         Multiple transactions per single stock
         """
-        self.portfolio = './app/test/portfolios/port_own_part.json'
+        self.portfolio = './app/test/payloads/port_own_part.json'
         self.stock = ['ETH', 'BTC']
         self.stock_url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD'
 

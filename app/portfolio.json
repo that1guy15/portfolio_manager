@@ -1,9 +1,9 @@
 [
   {
-    "symbol": "EOS",
     "amount": 17.62135848,
     "date": "04/4/18",
     "price": 14.55,
+    "symbol": "EOS",
     "value": 256.35
   }
 ]

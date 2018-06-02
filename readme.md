@@ -4,6 +4,7 @@ add transactional data of purchases into your portfolio to track performance of 
 ![Portfolio_Manager](portfolio_mngr.png?raw=true "Portfolio Manager")
 
 # TODOs:
+* Remove crypto from watchlist via UI
 * Remove/Change transactions via UI
 * Add stock market portfolio/watchlist
 * More tests

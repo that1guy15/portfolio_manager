@@ -1,5 +1,18 @@
-Setup:
+Portfolio Manager is basic crypto currency portfolio tool used to keep track of any number of crypto coins. You can also
+add transactional data of purchases into your portfolio to track performance of your coins. 
 
+# TODOs:
+* Remove/Change transactions via UI
+* Add stock market portfolio/watchlist
+* More tests
+
+
+
+
+# Setup:
+
+* NOTE: I have only ran and tested this on Mac.
+ 
 Clone repo into desired location. Im using my home directory in this example.
 
 Change directories into the portfolio_manager directory

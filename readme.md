@@ -1,6 +1,8 @@
 Portfolio Manager is basic crypto currency portfolio tool used to keep track of any number of crypto coins. You can also
 add transactional data of purchases into your portfolio to track performance of your coins. 
 
+![Portfolio_Manager](portfolio_mngr.png?raw=true "Portfolio Manager")
+
 # TODOs:
 * Remove/Change transactions via UI
 * Add stock market portfolio/watchlist
